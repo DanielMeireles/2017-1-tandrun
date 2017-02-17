@@ -11,7 +11,8 @@ var lebre = {
 	escorregar: 40,
 };
 
-var relogio
+var relogio;
+var fps = 50;
 function atualizar() {
 	var divTartaruga = document.getElementById("tartaruga");
 	var divLebre = document.getElementById("lebre");
@@ -25,13 +26,14 @@ function atualizar() {
 	}
 };
 function mover(){
-	tartaruga.left += tartaruga.passo;
-	tartaruga.bottom += tartaruga.passo;
-	lebre.left += lebre.passo;
-	lebre.bottom += lebre.passo;
+	tartaruga.left += tartaruga.passo/fps;
+	tartaruga.bottom += tartaruga.passo/fps;
+	lebre.left += lebre.passo/fps;
+	lebre.bottom += lebre.passo/fps;
 };
 function passoDeAnimacao(){
 		mover();
 		atualizar();
 };
-var relogio = setInterval(passoDeAnimacao,  500);
+
+relogio = setInterval(passoDeAnimacao, 1000/10);
