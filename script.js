@@ -10,18 +10,28 @@ var lebre = {
 	passo: 30,
 	escorregar: 40,
 };
+
+var relogio
 function atualizar() {
 	var divTartaruga = document.getElementById("tartaruga");
 	var divLebre = document.getElementById("lebre");
-	console.log(divTartaruga, divLebre);
 	divTartaruga.style.left=tartaruga.left+"px";
 	divTartaruga.style.bottom=tartaruga.bottom+"px";
 	divLebre.style.left=lebre.left+"px";
 	divLebre.style.bottom=lebre.bottom+"px";
-}
+
+	if(tartaruga.bottom>=390 || lebre.bottom>= 390){
+		clearInterval(relogio);
+	}
+};
 function mover(){
 	tartaruga.left += tartaruga.passo;
 	tartaruga.bottom += tartaruga.passo;
 	lebre.left += lebre.passo;
 	lebre.bottom += lebre.passo;
-}
+};
+function passoDeAnimacao(){
+		mover();
+		atualizar();
+};
+var relogio = setInterval(passoDeAnimacao,  500);
